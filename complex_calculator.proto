@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package complexcalculator;
+
+// Define a mensagem para um número complexo
+message ComplexNumber {
+    double real = 1;
+    double imaginaria = 2;
+}
+
+// Define a mensagem de resposta com um número complexo
+message ComplexResponse {
+    ComplexNumber result = 1;
+}
+
+// Define as mensagens de requisição
+message ComplexOperationRequest {
+    ComplexNumber num1 = 1;
+    ComplexNumber num2 = 2;
+    string operation = 3; // Tipo da operação: "add", "subtract", "multiply", "divide"
+}
+
+// Define o serviço da calculadora de números complexos
+service ComplexCalculator {
+    rpc Calculate (ComplexOperationRequest) returns (ComplexResponse);
+}
